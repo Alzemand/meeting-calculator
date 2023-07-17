@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de Custo por Segundo</title>
+</head>
+<body>
+  <h1>Calculadora de Custo por Segundo</h1>
+  
+  <select id="valoresPorHora" multiple></select>
+  <button onclick="adicionarValor()">Adicionar Valor</button>
+  <button onclick="removerValor()">Remover Valor</button>
+  
+  <br><br>
+  
+  <button onclick="startCalculo()">Calcular</button>
+  <button onclick="pausarRetomarCalculo()">Pausar/Retomar</button>
+  <button onclick="pararCalculo()">Parar</button>
+  
+  <h2 id="resultado">Custo acumulado: R$ 0.00</h2>
+  
+  <script src="script.js"></script>
+</body>
+</html>
