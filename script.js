@@ -76,47 +76,25 @@ function atualizarCusto() {
   }
 }
 
-var valoresPorHora = [];
-var nomesValores = [];
-
 function adicionarValor() {
   var select = document.getElementById("valoresPorHora");
-  var valor = parseFloat(prompt("Digite o valor por hora:"));
-  if (!isNaN(valor)) {
-    valoresPorHora.push(valor);
-    nomesValores.push("");
 
-    var option = document.createElement("option");
-    option.value = valor;
-    option.text = "R$ " + valor.toFixed(2);
-    select.add(option);
-    adicionarValorNaLista(valor);
-  }
-}
-
-function adicionarValorNaLista(valor) {
-  var lista = document.getElementById("valoresAdicionados");
-  var li = document.createElement("li");
-  li.classList.add("list-group-item");
-  li.innerText = "R$ " + valor;
-  lista.appendChild(li);
-}
-
-function adicionarNomeValor() {
   var nomeInput = document.getElementById("nomeInput");
   var valorInput = document.getElementById("valorInput");
-
-  var nome = nomeInput.value;
-  var valor = parseFloat(valorInput.value);
-
-  if (nome.trim() !== "" && !isNaN(valor)) {
-    nomesValores.push(nome);
-    adicionarValorNaLista(valor);  // Passar apenas o valor numérico
-    valoresPorHora.push(valor);
-
-    nomeInput.value = "";
-    valorInput.value = "";
+  var quantidadeInput = document.getElementById("quantidadeInput");
+  if (quantidadeInput.value == "") {
+    quantidadeInput.value = 1;
+  } else {
+    quantidadeInput.value = quantidadeInput.value;
   }
+
+  valorHora = parseFloat(valorInput.value / 220);
+  valorHora = valorHora * quantidadeInput.value;
+  valoresPorHora.push(valorHora);
+  var option = document.createElement("option");;
+  option.value = valorHora;
+  option.text = nomeInput.value + " - R$ " + valorHora.toFixed(2);
+  select.add(option);
 }
 
 
