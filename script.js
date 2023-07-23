@@ -15,12 +15,15 @@ function mostrarPagina(pagina) {
 
 function removerValor() {
   var select = document.getElementById("valoresPorHora");
-  var indiceSelecionado = select.selectedIndex;
+  var select2 = document.getElementById("valoresPorHora2");
+  var indiceSelecionado = select2.selectedIndex;
   if (indiceSelecionado >= 0) {
     select.remove(indiceSelecionado);
+    select2.remove(indiceSelecionado);
     valoresPorHora.splice(indiceSelecionado, 1);
   }
 }
+
 
 function startCalculo() {
   var select = document.getElementById("valoresPorHora");
@@ -93,8 +96,32 @@ function adicionarValor() {
   valoresPorHora.push(valorHora);
   var option = document.createElement("option");;
   option.value = valorHora;
-  option.text = nomeInput.value + " - R$ " + valorHora.toFixed(2);
+  option.text = nomeInput.value + " - X" + quantidadeInput.value;
   select.add(option);
+}
+
+function adicionarValor2() {
+  var select = document.getElementById("valoresPorHora2");
+
+  var nomeInput = document.getElementById("nomeInput");
+  var valorInput = document.getElementById("valorInput");
+  var quantidadeInput = document.getElementById("quantidadeInput");
+  if (quantidadeInput.value == "") {
+    quantidadeInput.value = 1;
+  } else {
+    quantidadeInput.value = quantidadeInput.value;
+  }
+
+  valorHora = parseFloat(valorInput.value / 220);
+  valorHora = valorHora * quantidadeInput.value;
+  valoresPorHora.push(valorHora);
+  var option = document.createElement("option");;
+  option.value = valorHora;
+  option.text = nomeInput.value + " - hora/R$ " + valorHora.toFixed(2);
+  select.add(option);
+  nomeInput.value = "";
+  valorInput.value = "";
+  quantidadeInput.value = "";
 }
 
 
